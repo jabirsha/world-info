@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+.app_header{
+  color: blue;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
