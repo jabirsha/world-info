@@ -1,0 +1,6 @@
+.country-detail-wrapper{
+    display: flex;
+}
+.country-detail-img{
+    padding-right: 5px;
+}

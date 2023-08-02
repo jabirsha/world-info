@@ -1,34 +1,18 @@
-import './App.css';
-import CountryCard from './Components/CountryCard';
-import {useEffect, useState} from 'react';
-import { getAllCountries } from './Services';
-
+import Home from "./Pages/Home";
+import CountryDetail from "./Pages/CountryDetail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-  const [countriesList, setCountriesList] = useState([]);
-  useEffect(() => {
-    getAllCountries().then((result) => {
-      const countries = result.data;
-      setCountriesList(countries);
-    });
-}, []);
-
   return (
     <div className="">
-      <div className="country-card-wrapper">
-        {
-        countriesList.map(country => (
-      <CountryCard
-      name={country.name}
-      capital={country.capital}
-      population={country.population}
-      flagUrl={country.flags.png}
-      key={country.alpha3Code}
-      />
-))
-}
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/countries/:countryCode' element={<CountryDetail />} />
+          <Route path='*' element={<h2>404 Page not found</h2>} />
+
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
 export default App;
