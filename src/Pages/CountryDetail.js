@@ -12,19 +12,28 @@ function CountryDetail(props) {
     getCountryDetail(countryCode).then((result) => {
       console.log("result.datA: ", result.data);
       setDetail(result.data);
-    })
+    });
   }, [countryCode]);
   console.log("countryCoDE", countryCode);
   return (
     <div className="country-detail-wrapper">
       <div>
-        <img className="country-detail-img" src={detail.flags?.png} alt={detail.name} />
+        <img
+          className="country-detail-img"
+          src={detail.flags?.png}
+          alt={detail.name}
+        />
       </div>
       <div>
         <div>Name: {detail.name} </div>
         <div>Capital: {detail.capital} </div>
         <div>Population: {detail.population} </div>
-        <div>Currencies: {detail.currencies?.map(currency=> currency.name).join(',')}</div>
+        <div>
+          Currencies:{" "}
+          {detail.currencies?.map((currency) => currency.name).join(",")}
+        </div>
+        <div>Region: {detail.region} </div>
+        <div>Timezone: {detail.timezones} </div>
       </div>
     </div>
   );
